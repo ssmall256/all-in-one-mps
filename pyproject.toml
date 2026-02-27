@@ -1,0 +1,94 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "allin1"
+dynamic = ["version"]
+description = "All-In-One Music Structure Analyzer for Apple Silicon (PyTorch/MPS)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = ["music", "beat", "downbeat", "tracking", "structure", "analysis", "allin1", "mps", "apple-silicon"]
+authors = [{ name = "ssmall256" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Operating System :: MacOS",
+  "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+dependencies = [
+  "torch",
+  "numpy>=1.26.0",
+  "librosa>=0.11.0",
+  "natten-mps",
+  "demucs",
+  "hydra-core",
+  "omegaconf",
+  "huggingface_hub",
+  "matplotlib",
+  "soundfile",
+]
+
+[project.urls]
+Documentation = "https://github.com/ssmall256/all-in-one-mps#readme"
+Issues = "https://github.com/ssmall256/all-in-one-mps/issues"
+Source = "https://github.com/ssmall256/all-in-one-mps"
+Upstream = "https://github.com/mir-aidj/all-in-one"
+Paper = "https://arxiv.org/abs/2307.16425"
+
+[project.scripts]
+allin1 = "allin1.cli:main"
+
+[tool.hatch.version]
+path = "src/allin1/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/allin1"]
+exclude = [
+  "**/*.so",
+  "**/*.c",
+  "**/*.cpp",
+  "**/*.pyx",
+  "**/*.pyx.txt",
+  "**/setup_cython.py",
+  "**/build/**",
+  "**/training/**",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/CHANGELOG.md",
+  "/LICENSE",
+  "/MANIFEST.in",
+  "/README.md",
+  "/pyproject.toml",
+  "/src/allin1",
+  "/tests",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=9.0.2",
+  "ruff",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E111", "E114", "E117", "E501", "E741", "B905"]
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "single"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
