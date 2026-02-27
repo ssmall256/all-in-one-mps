@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "allin1"
+name = "all-in-one-mps"
 dynamic = ["version"]
 description = "All-In-One Music Structure Analyzer for Apple Silicon (PyTorch/MPS)"
 readme = "README.md"

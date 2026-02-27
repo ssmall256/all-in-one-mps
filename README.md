@@ -74,13 +74,13 @@ If you use this in academic work, please cite the paper and the [upstream reposi
 ### pip
 
 ```bash
-pip install allin1
+pip install all-in-one-mps
 ```
 
 ### uv (recommended)
 
 ```bash
-uv pip install allin1
+uv pip install all-in-one-mps
 ```
 
 ---
